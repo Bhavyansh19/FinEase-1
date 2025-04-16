@@ -12,14 +12,15 @@ import path from "path";
 dotenv.config({ path: "./config/config.env" });
 const app = express();
 
-const port = process.env.PORT;
+const PORT = process.env.PORT;
 
 connectDB();
 
 const allowedOrigins = [
+  "http://localhost:4000",
+  "http://localhost:3000",
   "https://main.d1sj7cd70hlter.amplifyapp.com",
   "https://expense-tracker-app-three-beryl.vercel.app",
-  // add more origins as needed
 ];
 
 // Middleware
@@ -45,6 +46,6 @@ app.get("/", (req, res) => {
   res.send("Hello World!");
 });
 
-app.listen(port, () => {
-  console.log(`Server is listening on http://localhost:${port}`);
+app.listen(PORT, () => {
+  console.log(`Server is listening on http://localhost:${PORT}`);
 });
